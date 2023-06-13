@@ -22,6 +22,7 @@ namespace Pirate_treasure_map_game
         public void Damaged(int points)
         {
             HP -= points;
+            CheckHealth();
         }
 
         public void Poisoned(int dmg1, int dmg2, int dmg3)
@@ -32,6 +33,7 @@ namespace Pirate_treasure_map_game
                 HP -= dmg2;
                 HP -= dmg3;
             }
+            CheckHealth();
         }
 
         public void CheckHealth()

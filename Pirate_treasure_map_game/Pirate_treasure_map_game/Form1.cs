@@ -12,24 +12,16 @@ namespace Pirate_treasure_map_game
 {
     public partial class Form1 : Form
     {
-        //public Player Player { get; set; }
-        //public List<PictureBox> Cells { get; set; }
-        //public bool gameOver { get; set; }
-        //public Random Random { get; set; }
-        //public List<char> Content { get; set; }
-        //public char? CurrentChar { get; set; }
-        //public PictureBox CurrentPicture { get; set; }
         public Game Game { get; set; }
+        public int Ticks { get; set; }
+        public Dictionary<Image, int> Dict { get; set; }
         public Form1()
         {
             InitializeComponent();
-            //Content = new List<char>() { 't', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'
-            // , 'p' , 'p' , 'p' , 'p' , 'p' , 'p', 's', 's', 's', 's', 's', 's'};
-            //Player = new Player();
-            //Cells = new List<PictureBox>();
-            //CurrentChar = null;
-            //Random = new Random();
+            Dict = new Dictionary<Image, int>();
+            logs.Text = "";
             Game = new Game();
+            UpdateStatusStrip();
             LoadCells();
         }
 
@@ -79,68 +71,65 @@ namespace Pirate_treasure_map_game
             {
                 Game.CurrentPicture.Image = Image.FromFile(Game.CurrentPicture.Tag + ".png");
                 Game.CurrentChar = (char)Game.CurrentPicture.Tag;
+                Game.CheckCell(Game.CurrentPicture);
+                CheckStatus();
+                UpdateStatusStrip();
             }
-
-            //CheckCell(Game.CurrentPicture);
-            Game.CheckCell(Game.CurrentPicture);
-            
-
-
         }
-        // encounter
-        // stumble accross
-        // came across
-        public void CheckCell(PictureBox picture)
+        public void UpdateStatusStrip()
         {
-            //if ((char)picture.Tag == 't')
-            //{
-            //    gameOver = true;
-            //    if (MessageBox.Show("Congratulations matey! Ya found the treasure", "Start another adventure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //    {
-            //        RestartGame();
-            //    }
-            //}
-            //else if ((char)picture.Tag == 'e')
-            //{
-            //    logs.Text += "You came across an empty road and carry on walking safely.\n";
-            //}
-            //else if ((char)picture.Tag == 'p')
-            //{
-            //    int damage = Random.Next(5,15);
-            //    logs.Text += "You fell down a trap! You are impaled and take " + damage + " damage\n";
-            //}
+            playerStatus.Text = $"Player's health: {Game.Player.HP.ToString()}";
         }
 
-        public void RestartGame()
+        private void btnRestart_Click(object sender, EventArgs e)
         {
-            //Random random = new Random();
-            //for (int i = Content.Count - 1; i > 0; i--)
-            //{
-            //    int j = random.Next(i + 1);
-            //    char temp = Content[i];
-            //    Content[i] = Content[j];
-            //    Content[j] = temp;
-            //}
-            ////int indeks = random.Next(Content.Count);
-            ////int indeks = Content.Where(z => z == 't').Index();
-            //int indeks = Array.IndexOf(Content.ToArray(), 't');
-            //Cells[indeks].Image = null;
-            //Cells[indeks].Tag = 't';
-            //for (int i = 0; i < Cells.Count; i++)
-            //{
-            //    if (indeks != i)
-            //    {
-            //        Cells[i].Image = null;
-            //        Cells[i].Tag = Content[i];
-            //    }
-
-            //}
-
-            //gameOver = false;
+            Game.ClearCells();
+            Game = new Game();
+            LoadCells();
             logs.Text = "";
+            UpdateStatusStrip();
+            Game.RestartGame();
         }
 
-        public void GameOver()
+        public void CheckStatus()
+        {
+            if (Game.Status == 0)
+            {
+                logs.Text += "Good job landlubber!";
+                if (MessageBox.Show("Congratulations matey! Ya found the treasure", "Start another adventure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Game = new Game();
+                    LoadCells();
+                    Game.RestartGame();
+                    logs.Text = "";
+                }
+            }
+            else if (Game.Status == 1)
+            {
+                logs.Text += "You came across an empty road and carry on walking safely.\n";
+            }
+            else if (Game.Status == 2)
+            {
+                logs.Text += "You fell down a trap! You are impaled and take " + Game.CurrentDamage + " damage.\n";
+            }
+            else if (Game.Status == 3)
+            {
+                logs.Text += "You encounter a deadly den of spiders! You are poisoned and can not make another move until poison wears off.\n";
+                //timer1.Start();
+            }
+            if (Game.Status == 4)
+            {
+                UpdateStatusStrip();
+                if (MessageBox.Show("Ya died, you landlubber!", "Your health reaches 0. You die. Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    logs.Text = "";
+                    Game = new Game();
+                    Game.RestartGame();
+                }
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
 
         }

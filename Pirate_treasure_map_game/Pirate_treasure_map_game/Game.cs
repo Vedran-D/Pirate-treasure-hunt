@@ -23,6 +23,12 @@ namespace Pirate_treasure_map_game
         {
             Player = new Player();
             Cells = new List<PictureBox>();
+            //for (int i = 0; i < 25; i++)
+            //{
+            //    //Cells[1].Image = null;
+            //    //Cells[1].Tag = 'o';
+            //    //Cells.ElementAt(i).Image = null;
+            //}
             gameOver = false;
             Random = new Random();
             Content = new List<char>() { 't', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'
@@ -64,16 +70,13 @@ namespace Pirate_treasure_map_game
         {
             if ((char)picture.Tag == 't')
             {
+                Status = 0;
                 gameOver = true;
-                if (MessageBox.Show("Congratulations matey! Ya found the treasure", "Start another adventure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    RestartGame();
-                }
             }
             else if ((char)picture.Tag == 'e')
             {
                 Status = 1;
-                //logs.Text += "You came across an empty road and carry on walking safely.\n";
+                
             }
             else if ((char)picture.Tag == 'p')
             {
@@ -81,7 +84,6 @@ namespace Pirate_treasure_map_game
                 int damage = Random.Next(5, 15);
                 CurrentDamage = damage;
                 Player.Damaged(damage);
-                //logs.Text += "You fell down a trap! You are impaled and take " + damage + " damage.\n";
             }
             else if ((char)picture.Tag == 's')
             {
@@ -91,18 +93,22 @@ namespace Pirate_treasure_map_game
                 int damage2 = Random.Next(5, 8);
                 int damage3 = Random.Next(5, 8);
                 Player.Poisoned(damage1, damage2, damage3);
-                //logs.Text += "You encounter a deadly den of spiders! You are poisoned and take " + damage + " damage overtime.\n";
+                
             }
             if (Player.HP == 0)
             {
-                //logs.Text += "Your health reaches 0. You die.\n";
                 Status = 4;
                 gameOver = true;
-                if (MessageBox.Show("Ya died, you landlubber!", "Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    RestartGame();
-                }
             }
+        }
+        public void ClearCells()
+        {
+            for (int i = 0; i < 25; i++)
+            {
+                Cells[i].Image = null;
+                Cells[i].Tag = null;
+            }
+            Cells.Clear();
         }
     }
 }
