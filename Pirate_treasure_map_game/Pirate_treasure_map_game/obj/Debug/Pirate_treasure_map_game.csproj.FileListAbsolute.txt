@@ -1,0 +1,16 @@
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\Pirate_treasure_map_game.exe.config
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\Pirate_treasure_map_game.exe
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\Pirate_treasure_map_game.pdb
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.csproj.AssemblyReference.cache
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.csproj.SuggestedBindingRedirects.cache
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.Form1.resources
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.Properties.Resources.resources
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.csproj.GenerateResource.cache
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.csproj.CoreCompileInputs.cache
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.exe
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\obj\Debug\Pirate_treasure_map_game.pdb
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\treasure.jpg
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\e.png
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\s.png
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\p.png
+C:\Users\Vedran\Desktop\FINKI\Semestar 4\VP\Pirate_treasure_map_game\Pirate_treasure_map_game\bin\Debug\t.png
