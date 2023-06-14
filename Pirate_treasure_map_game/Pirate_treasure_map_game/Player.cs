@@ -25,13 +25,11 @@ namespace Pirate_treasure_map_game
             CheckHealth();
         }
 
-        public void Poisoned(int dmg1, int dmg2, int dmg3)
+        public void Poisoned(int dmg1)
         {
             if (IsPoisoned)
             {
                 HP -= dmg1;
-                HP -= dmg2;
-                HP -= dmg3;
             }
             CheckHealth();
         }

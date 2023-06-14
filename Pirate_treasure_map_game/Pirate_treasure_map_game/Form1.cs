@@ -17,6 +17,7 @@ namespace Pirate_treasure_map_game
         public Form1()
         {
             InitializeComponent();
+            Ticks = 0;
             logs.Text = "";
             Game = new Game();
             UpdateStatusStrip();
@@ -65,6 +66,10 @@ namespace Pirate_treasure_map_game
                 return;
             }
             
+            if (Game.Player.IsPoisoned)
+            {
+                return;
+            }
             Game.CurrentPicture = sender as PictureBox;
             if (Game.CurrentPicture.Tag != null && Game.CurrentPicture.Image == null)
             {
@@ -101,24 +106,47 @@ namespace Pirate_treasure_map_game
             }
             else if (Game.Status == 3)
             {
-                logs.Text += "You encounter a deadly den of spiders! You are poisoned and can not make another move until poison wears off.\n";
-                //timer1.Start();
+                logs.Text += "You encounter a deadly den of spiders! You are poisoned! You take damage over time and can not make another move until poison wears off.\n";
+                timer1.Start();
             }
             if (Game.Status == 4)
             {
                 UpdateStatusStrip();
                 if (MessageBox.Show("Ya died, you landlubber!", "Your health reaches 0. You die. Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    logs.Text = "";
-                    Game = new Game();
-                    Game.RestartGame();
+                    NewGame();
                 }
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            switch (Ticks)
+            {
+                case 0: logs.Text += "You take " + Game.PoisonDmg1 + " poison damage over time!\n";
+                    Ticks++; Game.Player.Poisoned(Game.PoisonDmg1); break;
+                case 1: logs.Text += "You take " + Game.PoisonDmg2 + " poison damage over time!\n";
+                    Ticks++; Game.Player.Poisoned(Game.PoisonDmg2); break;
+                case 2: logs.Text += "You take " + Game.PoisonDmg3 + " poison damage over time!\n";
+                    Ticks++; Game.Player.Poisoned(Game.PoisonDmg3); break;
+                default: 
+                    Ticks = 0;
+                    timer1.Stop();
+                    Game.Player.IsPoisoned = false;
+                    break;
+            }
+            UpdateStatusStrip();
+            Game.Player.CheckHealth();
+            if (Game.Player.HP == 0)
+            {
+                timer1.Stop();
+                UpdateStatusStrip();
+                if (MessageBox.Show("Ya died, you landlubber!", "Your health reaches 0. You die. Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    NewGame();
+                }
+            }
+            
         }
 
         public void UpdateStatusStrip()

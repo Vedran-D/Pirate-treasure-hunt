@@ -338,16 +338,17 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playerStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 589);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 581);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1184, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1184, 30);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // playerStatus
             // 
+            this.playerStatus.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.playerStatus.Name = "playerStatus";
-            this.playerStatus.Size = new System.Drawing.Size(118, 17);
+            this.playerStatus.Size = new System.Drawing.Size(194, 25);
             this.playerStatus.Text = "toolStripStatusLabel1";
             // 
             // timer1

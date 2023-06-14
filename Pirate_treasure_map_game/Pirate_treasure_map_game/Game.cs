@@ -19,16 +19,13 @@ namespace Pirate_treasure_map_game
         public PictureBox CurrentPicture { get; set; }
         public int Status { get; set; }
         public int CurrentDamage { get; set; }
+        public int PoisonDmg1 { get; set; }
+        public int PoisonDmg2 { get; set; }
+        public int PoisonDmg3 { get; set; }
         public Game()
         {
             Player = new Player();
             Cells = new List<PictureBox>();
-            //for (int i = 0; i < 25; i++)
-            //{
-            //    Cells[1].Image = null;
-            //    Cells[1].Tag = 'o';
-            //    Cells.ElementAt(i).Image = null;
-            //}
             gameOver = false;
             Random = new Random();
             Content = new List<char>() { 't', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'
@@ -37,6 +34,9 @@ namespace Pirate_treasure_map_game
             CurrentPicture = null;
             Status = -1;
             CurrentDamage = 0;
+            PoisonDmg1 = 0;
+            PoisonDmg2 = 0;
+            PoisonDmg3 = 0;
         }
 
         
@@ -67,33 +67,33 @@ namespace Pirate_treasure_map_game
 
         public void CheckCell(PictureBox picture)
         {
-            if ((char)picture.Tag == 't')
-            {
-                Status = 0;
-                gameOver = true;
-            }
-            else if ((char)picture.Tag == 'e')
-            {
-                Status = 1;
-                
-            }
-            else if ((char)picture.Tag == 'p')
-            {
-                Status = 2;
-                int damage = Random.Next(5, 15);
-                CurrentDamage = damage;
-                Player.Damaged(damage);
-            }
-            else if ((char)picture.Tag == 's')
-            {
-                Status = 3;
-                Player.IsPoisoned = true;
-                int damage1 = Random.Next(5, 8);
-                int damage2 = Random.Next(5, 8);
-                int damage3 = Random.Next(5, 8);
-                Player.Poisoned(damage1, damage2, damage3);
-                
-            }
+                if ((char)picture.Tag == 't')
+                {
+                    Status = 0;
+                    gameOver = true;
+                }
+                else if ((char)picture.Tag == 'e')
+                {
+                    Status = 1;
+
+                }
+                else if ((char)picture.Tag == 'p')
+                {
+                    Status = 2; 
+                    CurrentDamage = Random.Next(5, 15);
+                    Player.Damaged(CurrentDamage);
+                }
+                else if ((char)picture.Tag == 's')
+                {
+                    Status = 3;
+                    Player.IsPoisoned = true;
+                    PoisonDmg1 = Random.Next(5, 8);
+                    PoisonDmg2 = Random.Next(5, 8);
+                    PoisonDmg3 = Random.Next(5, 8);
+                    //Player.Poisoned(PoisonDmg1, PoisonDmg2, PoisonDmg3);
+
+                }
+            
             if (Player.HP == 0)
             {
                 Status = 4;
