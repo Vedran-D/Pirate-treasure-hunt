@@ -25,9 +25,9 @@ namespace Pirate_treasure_map_game
             Cells = new List<PictureBox>();
             //for (int i = 0; i < 25; i++)
             //{
-            //    //Cells[1].Image = null;
-            //    //Cells[1].Tag = 'o';
-            //    //Cells.ElementAt(i).Image = null;
+            //    Cells[1].Image = null;
+            //    Cells[1].Tag = 'o';
+            //    Cells.ElementAt(i).Image = null;
             //}
             gameOver = false;
             Random = new Random();
@@ -35,7 +35,7 @@ namespace Pirate_treasure_map_game
              , 'p' , 'p' , 'p' , 'p' , 'p' , 'p', 's', 's', 's', 's', 's', 's'};
             CurrentChar = null;
             CurrentPicture = null;
-            Status = 0;
+            Status = -1;
             CurrentDamage = 0;
         }
 
@@ -43,10 +43,9 @@ namespace Pirate_treasure_map_game
 
         public void RestartGame()
         {
-            Random random = new Random();
             for (int i = Content.Count - 1; i > 0; i--)
             {
-                int j = random.Next(i + 1);
+                int j = Random.Next(i + 1);
                 char temp = Content[i];
                 Content[i] = Content[j];
                 Content[j] = temp;
@@ -106,9 +105,9 @@ namespace Pirate_treasure_map_game
             for (int i = 0; i < 25; i++)
             {
                 Cells[i].Image = null;
-                Cells[i].Tag = null;
+                //Cells[i].Tag = null;
             }
-            Cells.Clear();
+            //Cells.Clear();
         }
     }
 }

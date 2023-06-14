@@ -14,11 +14,9 @@ namespace Pirate_treasure_map_game
     {
         public Game Game { get; set; }
         public int Ticks { get; set; }
-        public Dictionary<Image, int> Dict { get; set; }
         public Form1()
         {
             InitializeComponent();
-            Dict = new Dictionary<Image, int>();
             logs.Text = "";
             Game = new Game();
             UpdateStatusStrip();
@@ -61,14 +59,24 @@ namespace Pirate_treasure_map_game
 
         public void pictureBox_Click(object sender, EventArgs e)
         {
+            
             if (Game.gameOver)
             {
                 return;
             }
-
+            
             Game.CurrentPicture = sender as PictureBox;
+            if (Game.CurrentPicture.Tag != null) //
+            {
+                logs.Text += "1 ";
+            }
+            if (Game.CurrentPicture.Image == null)
+            {
+                logs.Text += "2 ";
+            }
             if (Game.CurrentPicture.Tag != null && Game.CurrentPicture.Image == null)
             {
+                //logs.Text += "HJBADSF";
                 Game.CurrentPicture.Image = Image.FromFile(Game.CurrentPicture.Tag + ".png");
                 Game.CurrentChar = (char)Game.CurrentPicture.Tag;
                 Game.CheckCell(Game.CurrentPicture);
@@ -76,19 +84,14 @@ namespace Pirate_treasure_map_game
                 UpdateStatusStrip();
             }
         }
-        public void UpdateStatusStrip()
-        {
-            playerStatus.Text = $"Player's health: {Game.Player.HP.ToString()}";
-        }
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Game.ClearCells();
             Game = new Game();
+            UpdateStatusStrip();
             LoadCells();
             logs.Text = "";
-            UpdateStatusStrip();
-            Game.RestartGame();
         }
 
         public void CheckStatus()
@@ -134,6 +137,9 @@ namespace Pirate_treasure_map_game
 
         }
 
-
+        public void UpdateStatusStrip()
+        {
+            playerStatus.Text = $"Player's health: {Game.Player.HP.ToString()}";
+        }
     }
 }
