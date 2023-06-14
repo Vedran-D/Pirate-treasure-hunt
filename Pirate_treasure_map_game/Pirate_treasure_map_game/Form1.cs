@@ -63,12 +63,6 @@ namespace Pirate_treasure_map_game
 
         public void pictureBox_Click(object sender, EventArgs e)
         {
-            
-            //if (Game.gameOver)
-            //{
-            //    return;
-            //}
-            
             if (Game.Player.IsPoisoned)
             {
                 return;
@@ -77,7 +71,6 @@ namespace Pirate_treasure_map_game
             if (Game.CurrentPicture.Tag != null && Game.CurrentPicture.Image == null)
             {
                 Game.CurrentPicture.Image = Image.FromFile(Game.CurrentPicture.Tag + ".png");
-                Game.CurrentChar = (char)Game.CurrentPicture.Tag;
                 Game.CheckCell(Game.CurrentPicture);
                 CheckStatus();
                 UpdateStatusStrip();
@@ -114,11 +107,7 @@ namespace Pirate_treasure_map_game
             }
             if (Game.Status == 4)
             {
-                UpdateStatusStrip();
-                if (MessageBox.Show("Ya died, you landlubber!", "Your health reaches 0. You die. Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    NewGame();
-                }
+                YouDied();
             }
         }
 
@@ -127,11 +116,11 @@ namespace Pirate_treasure_map_game
             switch (Ticks)
             {
                 case 0: logs.Text += "You take " + Game.PoisonDmg1 + " poison damage over time!\n";
-                    Ticks++; Game.Player.Poisoned(Game.PoisonDmg1); break;
+                    Ticks++; Game.Player.Damaged(Game.PoisonDmg1); break;
                 case 1: logs.Text += "You take " + Game.PoisonDmg2 + " poison damage over time!\n";
-                    Ticks++; Game.Player.Poisoned(Game.PoisonDmg2); break;
+                    Ticks++; Game.Player.Damaged(Game.PoisonDmg2); break;
                 case 2: logs.Text += "You take " + Game.PoisonDmg3 + " poison damage over time!\n";
-                    Ticks++; Game.Player.Poisoned(Game.PoisonDmg3); break;
+                    Ticks++; Game.Player.Damaged(Game.PoisonDmg3); break;
                 default: 
                     Ticks = 0;
                     timer1.Stop();
@@ -139,15 +128,10 @@ namespace Pirate_treasure_map_game
                     break;
             }
             UpdateStatusStrip();
-            Game.Player.CheckHealth();
             if (Game.Player.HP == 0)
             {
                 timer1.Stop();
-                UpdateStatusStrip();
-                if (MessageBox.Show("Ya died, you landlubber!", "Your health reaches 0. You die. Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    NewGame();
-                }
+                YouDied();
             }
             
         }
@@ -167,5 +151,15 @@ namespace Pirate_treasure_map_game
             LoadCells();
             logs.Text = "";
         }
+
+        public void YouDied()
+        {
+            UpdateStatusStrip();
+            if (MessageBox.Show("Ya died, you landlubber!", "Your health reaches 0. You die. Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                NewGame();
+            }
+        }
+
     }
 }

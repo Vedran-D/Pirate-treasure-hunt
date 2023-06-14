@@ -14,7 +14,6 @@ namespace Pirate_treasure_map_game
         public List<PictureBox> Cells { get; set; }
         public Random Random { get; set; }
         public List<char> Content { get; set; }
-        public char? CurrentChar { get; set; }
         public PictureBox CurrentPicture { get; set; }
         public int Status { get; set; }
         public int CurrentDamage { get; set; }
@@ -28,7 +27,6 @@ namespace Pirate_treasure_map_game
             Random = new Random();
             Content = new List<char>() { 't', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'
              , 'p' , 'p' , 'p' , 'p' , 'p' , 'p', 's', 's', 's', 's', 's', 's'};
-            CurrentChar = null;
             CurrentPicture = null;
             Status = -1;
             CurrentDamage = 0;
