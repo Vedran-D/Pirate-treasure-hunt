@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,7 +29,7 @@ namespace Pirate_treasure_map_game
 
         public void LoadCells()
         {
-            int top = 135;
+            int top = 125;
             int left = 20;
             int rows = 0;
             for (int i = 0; i < 25; i++)
@@ -163,15 +165,6 @@ namespace Pirate_treasure_map_game
             UpdateStatusStrip();
             LoadCells();
             logs.Text = "";
-        }
-
-        private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                
-            }
         }
     }
 }

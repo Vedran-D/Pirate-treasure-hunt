@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace Pirate_treasure_map_game
 {
+    [Serializable]
     public class Game
     {
         public Player Player { get; set; }

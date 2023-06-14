@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pirate_treasure_map_game
 {
+    [Serializable]
     public class Player
     {
         public int HP { get; set; }
