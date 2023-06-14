@@ -20,6 +20,7 @@ namespace Pirate_treasure_map_game
         public int PoisonDmg1 { get; set; }
         public int PoisonDmg2 { get; set; }
         public int PoisonDmg3 { get; set; }
+        public bool gameOver { get; set; }
         public Game()
         {
             Player = new Player();
@@ -33,6 +34,7 @@ namespace Pirate_treasure_map_game
             PoisonDmg1 = 0;
             PoisonDmg2 = 0;
             PoisonDmg3 = 0;
+            gameOver = false;
         }
 
         
@@ -58,6 +60,7 @@ namespace Pirate_treasure_map_game
                 }
 
             }
+            gameOver = false;
         }
 
         public void CheckCell(PictureBox picture)
@@ -65,6 +68,7 @@ namespace Pirate_treasure_map_game
                 if ((char)picture.Tag == 't')
                 {
                     Status = 0;
+                    gameOver = true;
                 }
                 else if ((char)picture.Tag == 'e')
                 {
@@ -90,6 +94,7 @@ namespace Pirate_treasure_map_game
             if (Player.HP == 0)
             {
                 Status = 4;
+                gameOver = true;
             }
         }
         public void ClearCells()
