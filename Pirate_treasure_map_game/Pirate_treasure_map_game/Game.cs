@@ -104,7 +104,7 @@ namespace Pirate_treasure_map_game
         {
             for (int i = 0; i < 25; i++)
             {
-                Cells[i].Image = null;
+                Cells[i].Hide();
                 //Cells[i].Tag = null;
             }
             //Cells.Clear();

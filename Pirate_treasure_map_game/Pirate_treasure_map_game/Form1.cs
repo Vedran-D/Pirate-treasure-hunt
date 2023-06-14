@@ -66,17 +66,8 @@ namespace Pirate_treasure_map_game
             }
             
             Game.CurrentPicture = sender as PictureBox;
-            if (Game.CurrentPicture.Tag != null) //
-            {
-                logs.Text += "1 ";
-            }
-            if (Game.CurrentPicture.Image == null)
-            {
-                logs.Text += "2 ";
-            }
             if (Game.CurrentPicture.Tag != null && Game.CurrentPicture.Image == null)
             {
-                //logs.Text += "HJBADSF";
                 Game.CurrentPicture.Image = Image.FromFile(Game.CurrentPicture.Tag + ".png");
                 Game.CurrentChar = (char)Game.CurrentPicture.Tag;
                 Game.CheckCell(Game.CurrentPicture);
@@ -87,11 +78,7 @@ namespace Pirate_treasure_map_game
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            Game.ClearCells();
-            Game = new Game();
-            UpdateStatusStrip();
-            LoadCells();
-            logs.Text = "";
+            NewGame();
         }
 
         public void CheckStatus()
@@ -101,10 +88,7 @@ namespace Pirate_treasure_map_game
                 logs.Text += "Good job landlubber!";
                 if (MessageBox.Show("Congratulations matey! Ya found the treasure", "Start another adventure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Game = new Game();
-                    LoadCells();
-                    Game.RestartGame();
-                    logs.Text = "";
+                    NewGame();
                 }
             }
             else if (Game.Status == 1)
@@ -141,5 +125,15 @@ namespace Pirate_treasure_map_game
         {
             playerStatus.Text = $"Player's health: {Game.Player.HP.ToString()}";
         }
+
+        public void NewGame()
+        {
+            Game.ClearCells();
+            Game = new Game();
+            UpdateStatusStrip();
+            LoadCells();
+            logs.Text = "";
+        }
+
     }
 }
