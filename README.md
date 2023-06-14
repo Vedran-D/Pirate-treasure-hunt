@@ -134,10 +134,13 @@ Pirate treasure hunt
 4. Слики од играта.
 
 - при почеток на играта:
-![slika1](https://github.com/Vedran-D/Pirate-treasure-hunt/assets/61386261/120718af-cad3-448d-9817-728b36473c26)
+![slika1](https://github.com/Vedran-D/Pirate-treasure-hunt/assets/61386261/ed106414-0ff2-4e1e-ba1a-35f86191f88f)
+
 
 - корисникот почнува да клика на коцките:
-![slika2](https://github.com/Vedran-D/Pirate-treasure-hunt/assets/61386261/bc516de2-39e6-4f4b-8a04-7272b6840598)
+![slika2](https://github.com/Vedran-D/Pirate-treasure-hunt/assets/61386261/50f9d68d-bd4e-42b7-b037-33007055f6c1)
+
 
 - корисникот кога ќе победи:
-![slika3](https://github.com/Vedran-D/Pirate-treasure-hunt/assets/61386261/4e6c74a0-f9c7-4235-8d58-822f54b2d8d8)
+![slika3](https://github.com/Vedran-D/Pirate-treasure-hunt/assets/61386261/8de9b56d-b72b-49da-bc5e-b28741299c93)
+
