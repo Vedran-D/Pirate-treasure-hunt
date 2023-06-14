@@ -158,6 +158,7 @@ namespace Pirate_treasure_map_game
 
         public void YouDied()
         {
+            logs.Text += "You died!";
             UpdateStatusStrip();
             if (MessageBox.Show("Ya died, you landlubber!", "Your health reaches 0. You die. Do you take the challange again?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
