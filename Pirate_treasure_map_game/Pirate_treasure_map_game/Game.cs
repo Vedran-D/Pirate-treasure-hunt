@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace Pirate_treasure_map_game
 {
-    [Serializable]
     public class Game
     {
         public Player Player { get; set; }
@@ -91,7 +90,6 @@ namespace Pirate_treasure_map_game
                     PoisonDmg1 = Random.Next(5, 9);
                     PoisonDmg2 = Random.Next(5, 9);
                     PoisonDmg3 = Random.Next(5, 9);
-                    //Player.Poisoned(PoisonDmg1, PoisonDmg2, PoisonDmg3);
 
                 }
             
@@ -106,9 +104,7 @@ namespace Pirate_treasure_map_game
             for (int i = 0; i < 25; i++)
             {
                 Cells[i].Hide();
-                //Cells[i].Tag = null;
             }
-            //Cells.Clear();
         }
     }
 }
