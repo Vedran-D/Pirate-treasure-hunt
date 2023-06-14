@@ -64,10 +64,10 @@ namespace Pirate_treasure_map_game
         public void pictureBox_Click(object sender, EventArgs e)
         {
             
-            if (Game.gameOver)
-            {
-                return;
-            }
+            //if (Game.gameOver)
+            //{
+            //    return;
+            //}
             
             if (Game.Player.IsPoisoned)
             {
@@ -159,6 +159,7 @@ namespace Pirate_treasure_map_game
 
         public void NewGame()
         {
+            timer1.Stop();
             Ticks = 0;
             Game.ClearCells();
             Game = new Game();

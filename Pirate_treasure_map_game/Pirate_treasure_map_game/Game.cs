@@ -12,7 +12,6 @@ namespace Pirate_treasure_map_game
     {
         public Player Player { get; set; }
         public List<PictureBox> Cells { get; set; }
-        public bool gameOver { get; set; }
         public Random Random { get; set; }
         public List<char> Content { get; set; }
         public char? CurrentChar { get; set; }
@@ -26,7 +25,6 @@ namespace Pirate_treasure_map_game
         {
             Player = new Player();
             Cells = new List<PictureBox>();
-            gameOver = false;
             Random = new Random();
             Content = new List<char>() { 't', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'
              , 'p' , 'p' , 'p' , 'p' , 'p' , 'p', 's', 's', 's', 's', 's', 's'};
@@ -62,7 +60,6 @@ namespace Pirate_treasure_map_game
                 }
 
             }
-            gameOver = false;
         }
 
         public void CheckCell(PictureBox picture)
@@ -70,7 +67,6 @@ namespace Pirate_treasure_map_game
                 if ((char)picture.Tag == 't')
                 {
                     Status = 0;
-                    gameOver = true;
                 }
                 else if ((char)picture.Tag == 'e')
                 {
@@ -96,7 +92,6 @@ namespace Pirate_treasure_map_game
             if (Player.HP == 0)
             {
                 Status = 4;
-                gameOver = true;
             }
         }
         public void ClearCells()
