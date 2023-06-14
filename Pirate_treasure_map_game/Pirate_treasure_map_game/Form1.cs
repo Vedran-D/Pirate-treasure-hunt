@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Pirate_treasure_map_game
 
         public void LoadCells()
         {
-            int top = 35;
+            int top = 135;
             int left = 20;
             int rows = 0;
             for (int i = 0; i < 25; i++)
@@ -156,6 +157,7 @@ namespace Pirate_treasure_map_game
 
         public void NewGame()
         {
+            Ticks = 0;
             Game.ClearCells();
             Game = new Game();
             UpdateStatusStrip();
@@ -163,5 +165,13 @@ namespace Pirate_treasure_map_game
             logs.Text = "";
         }
 
+        private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                
+            }
+        }
     }
 }
