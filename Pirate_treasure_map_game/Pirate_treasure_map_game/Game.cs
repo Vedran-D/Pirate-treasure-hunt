@@ -81,16 +81,16 @@ namespace Pirate_treasure_map_game
                 else if ((char)picture.Tag == 'p')
                 {
                     Status = 2; 
-                    CurrentDamage = Random.Next(5, 15);
+                    CurrentDamage = Random.Next(5, 16);
                     Player.Damaged(CurrentDamage);
                 }
                 else if ((char)picture.Tag == 's')
                 {
                     Status = 3;
                     Player.IsPoisoned = true;
-                    PoisonDmg1 = Random.Next(5, 8);
-                    PoisonDmg2 = Random.Next(5, 8);
-                    PoisonDmg3 = Random.Next(5, 8);
+                    PoisonDmg1 = Random.Next(5, 9);
+                    PoisonDmg2 = Random.Next(5, 9);
+                    PoisonDmg3 = Random.Next(5, 9);
                     //Player.Poisoned(PoisonDmg1, PoisonDmg2, PoisonDmg3);
 
                 }
