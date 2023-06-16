@@ -90,11 +90,7 @@ namespace Pirate_treasure_map_game
         {
             if (Game.Status == 0)
             {
-                logs.Text += "Good job landlubber!";
-                if (MessageBox.Show("Congratulations matey! Ya found the treasure", "Start another adventure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    NewGame();
-                }
+                YouWon();
             }
             else if (Game.Status == 1)
             {
@@ -165,6 +161,16 @@ namespace Pirate_treasure_map_game
                 NewGame();
             }
         }
+
+        public void YouWon()
+        {
+            logs.Text += "Good job landlubber!";
+            if (MessageBox.Show("Congratulations matey! Ya found the treasure", "Start another adventure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                NewGame();
+            }
+        }
+
 
     }
 }
