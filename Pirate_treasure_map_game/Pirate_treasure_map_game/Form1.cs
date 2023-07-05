@@ -21,6 +21,8 @@ namespace Pirate_treasure_map_game
         {
             InitializeComponent();
             Ticks = 0;
+            this.BackColor = Color.LightSteelBlue;
+            statusStrip1.BackColor = Color.RoyalBlue;
             logs.Text = "";
             Game = new Game();
             UpdateStatusStrip();
